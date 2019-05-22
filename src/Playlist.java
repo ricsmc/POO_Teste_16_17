@@ -27,9 +27,19 @@ public class Playlist {
     }
 
     public double tempoTotal (String autor){ //throws AutorInexistenteException
-        return this.getFaixas(autor).stream().map(x -> x.getNumeroDeVezesTocada() * x.getDuracao()).
-                mapToDouble(Double::doubleValue).sum();
+        return this.getFaixas(autor).stream().//map(x -> x.getNumeroDeVezesTocada() * x.getDuracao()).
+                mapToDouble(x-> x.getNumeroDeVezesTocada() * x.getDuracao()).sum();
     }
 
+    public List<Faixa> todasAsFaixas(){
+        List<Faixa> paraRet = new ArrayList<>();
+        this.musicas.entrySet().stream().forEach(x-> x.getValue().stream().forEach(y-> paraRet.add(y.clone())));
+        return paraRet;
+    }
+
+    public Map<Integer, List<Faixa>> faixasPorClass(){
+        return todasAsFaixas().stream()
+               .collect(Collectors.groupingBy(Faixa::getClassificacao));
+    }
 
 }

@@ -79,4 +79,8 @@ public class Faixa implements Comparable<Faixa>{
         else return 1;
     }
 
+    public Faixa clone(){
+        return new Faixa(this);
+    }
+
 }
