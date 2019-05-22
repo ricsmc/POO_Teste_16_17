@@ -72,7 +72,11 @@ public class Faixa implements Comparable<Faixa>{
     }
 
     public int compareTo(Faixa f1){
-        return this.numeroDeVezesTocada.compareTo(f1.getNumeroDeVezesTocada());
+        if (this.getNumeroDeVezesTocada() == f1.getNumeroDeVezesTocada())
+            return 0;
+        if (this.getNumeroDeVezesTocada() < f1.getNumeroDeVezesTocada())
+            return -1;
+        else return 1;
     }
 
 }
