@@ -24,10 +24,11 @@ public class Playlist {
         List<Faixa> l;
         try{
             l = this.musicas.get(autor);
-        }
-        catch(AutorInexistenteException e ){
+
+        } catch (AutorInexistenteException e ){
             throw new AutorInexistenteException("Erro");
         }
+
         return l;
 
     }
@@ -35,7 +36,7 @@ public class Playlist {
     public double tempoTotal (String autor) throws AutorInexistenteException{
         double i;
         try{
-            i = this.getFaixas(autor).stream().//map(x -> x.getNumeroDeVezesTocada() * x.getDuracao()).
+            i = this.getFaixas(autor).stream().
                 mapToDouble(x-> x.getNumeroDeVezesTocada() * x.getDuracao()).sum();
 
         }
@@ -55,5 +56,7 @@ public class Playlist {
         return todasAsFaixas().stream()
                .collect(Collectors.groupingBy(Faixa::getClassificacao));
     }
+
+
 
 }
