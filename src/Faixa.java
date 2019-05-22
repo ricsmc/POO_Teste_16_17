@@ -73,7 +73,7 @@ public class Faixa implements Comparable<Faixa>, Playable{
         if (this == o) return true;
         if (o == null || o.getClass() != this.getClass()) return false;
         Faixa faixa = (Faixa) o;
-        return this.nome.equals(faixa.getNome()) &&
+        return  this.nome.equals(faixa.getNome()) &&
                 this.autor.equals(faixa.getAutor()) &&
                 this.duracao == faixa.getDuracao() &&
                 this.classificacao == faixa.getClassificacao() &&

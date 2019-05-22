@@ -18,8 +18,8 @@ public class AgenciaViagens {
     public void guardaEstado(String nomeFicheiro, String tipo) throws FileNotFoundException, IOException {
         Map<Hotel, List<String>> n = new HashMap<>();
         for(Hotel i : this.lista.keySet()){
-            if(tipo.equals("Premium") && i.getClass().equals(new HotelPremium())){
-
+            if(tipo.equals("Premium") && i isinstanceof Premium){
+                n.put(i, this.lista.values());
             }
         }
         FileOutputStream fos = new FileOutputStream(nomeFicheiro);
@@ -28,4 +28,6 @@ public class AgenciaViagens {
         oos.flush();
         oos.close();
     }
+
+
 }

@@ -25,16 +25,8 @@ public class Playlist{
     }
 
     public double tempoTotal (String autor) throws AutorInexistenteException{
-        double i;
-        try{
-            i = this.getFaixas(autor).stream().
+        return this.getFaixas(autor).stream().
                 mapToDouble(x-> x.getNumeroDeVezesTocada() * x.getDuracao()).sum();
-
-        }
-        catch (AutorInexistenteException e){
-            throw  new AutorInexistenteException("Erro");
-        }
-        return i;
     }
 
     public List<Faixa> todasAsFaixas(){
