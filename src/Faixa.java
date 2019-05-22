@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Faixa implements Comparable<Faixa>{
+public class Faixa implements Comparable<Faixa>, Playable{
     private String nome;
     private String autor;
     private double duracao;
@@ -81,6 +81,10 @@ public class Faixa implements Comparable<Faixa>{
 
     public Faixa clone(){
         return new Faixa(this);
+    }
+
+    public void play(){
+        System.audio(this.letra);
     }
 
 }

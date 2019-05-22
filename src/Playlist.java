@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Playlist {
+public class Playlist{
     private String nome;
     private Map<String, List<Faixa>> musicas;
 
@@ -24,7 +24,6 @@ public class Playlist {
         List<Faixa> l;
         try{
             l = this.musicas.get(autor);
-
         } catch (AutorInexistenteException e ){
             throw new AutorInexistenteException("Erro");
         }
@@ -56,6 +55,8 @@ public class Playlist {
         return todasAsFaixas().stream()
                .collect(Collectors.groupingBy(Faixa::getClassificacao));
     }
+
+
 
 
 
