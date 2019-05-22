@@ -20,15 +20,29 @@ public class Playlist {
         }
     }
 
-    public List<Faixa> getFaixas (String autor) { //throws AutorInexistenteException
-        return this.musicas.entrySet().stream().filter(l -> l.getKey().equals(autor)).
-                flatMap(x-> x.getValue().stream()).collect(Collectors.toList());
+    public List<Faixa> getFaixas (String autor) throws AutorInexistenteException {
+        List<Faixa> l;
+        try{
+            l = this.musicas.get(autor);
+        }
+        catch(AutorInexistenteException e ){
+            throw new AutorInexistenteException("Erro");
+        }
+        return l;
 
     }
 
-    public double tempoTotal (String autor){ //throws AutorInexistenteException
-        return this.getFaixas(autor).stream().//map(x -> x.getNumeroDeVezesTocada() * x.getDuracao()).
+    public double tempoTotal (String autor) throws AutorInexistenteException{
+        double i;
+        try{
+            i = this.getFaixas(autor).stream().//map(x -> x.getNumeroDeVezesTocada() * x.getDuracao()).
                 mapToDouble(x-> x.getNumeroDeVezesTocada() * x.getDuracao()).sum();
+
+        }
+        catch (AutorInexistenteException e){
+            throw  new AutorInexistenteException("Erro");
+        }
+        return i;
     }
 
     public List<Faixa> todasAsFaixas(){
