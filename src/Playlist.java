@@ -21,15 +21,7 @@ public class Playlist{
     }
 
     public List<Faixa> getFaixas (String autor) throws AutorInexistenteException {
-        List<Faixa> l;
-        try{
-            l = this.musicas.get(autor);
-        } catch (AutorInexistenteException e ){
-            throw new AutorInexistenteException("Erro");
-        }
-
-        return l;
-
+        return this.musicas.get(autor);
     }
 
     public double tempoTotal (String autor) throws AutorInexistenteException{

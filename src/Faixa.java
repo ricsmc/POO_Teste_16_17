@@ -20,6 +20,17 @@ public class Faixa implements Comparable<Faixa>, Playable{
         this.numeroDeVezesTocada = 0;
         this.ultimaVez = LocalDateTime.MIN;
     }
+
+    public Faixa(String nome, String autor, double duracao, int classificacao, ArrayList<String> letra, int numeroDeVezesTocada, LocalDateTime ultimaVez) {
+        this.nome = nome;
+        this.autor = autor;
+        this.duracao = duracao;
+        this.classificacao = classificacao;
+        this.letra = new ArrayList<>(letra);
+        this.numeroDeVezesTocada = numeroDeVezesTocada;
+        this.ultimaVez = ultimaVez;
+    }
+
     public Faixa(Faixa f){
         this.nome = f.getNome();
         this.autor = f.getAutor();
@@ -84,7 +95,8 @@ public class Faixa implements Comparable<Faixa>, Playable{
     }
 
     public void play(){
-        System.audio(this.letra);
+        System.out.println(this.autor);
+        // !!!! este e o vdd mas senao da erro lmao -> System.audio(this.letra);
     }
 
 }
